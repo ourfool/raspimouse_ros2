@@ -10,3 +10,6 @@
 [submodule "raspimouse_bags"]
 	path = raspimouse_bags
 	url = https://github.com/youtalk/raspimouse_bags.git
+[submodule "raspimouse_driver"]
+	path = raspimouse_driver
+	url = https://github.com/ourfool/raspimouse2
