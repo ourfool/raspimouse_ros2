@@ -3,7 +3,7 @@ ROS 2 navigation pakcages for Raspberry Pi Mouse V3
 
 ## OS and ROS 2 set up
 
-First of all, you need to install Ubuntu 18.04 and ROS 2 Dashing Diademata on your Raspberry Pi 3 B and PC.
+First of all, you need to install Ubuntu 18.04 and ROS 2 Dashing Diademata on your Raspberry Pi 4 Model B and PC.
 Please refer the official ROS 2 installation process: https://index.ros.org/doc/ros2/Installation/Crystal/Linux-Install-Binary/
 
 ### `colcon` and `rosdep` set up
@@ -23,7 +23,7 @@ The `ROS_DOMAIN_ID` is a number between `0` and `255`.
 export ROS_DOMAIN_ID=XXX
 ```
 
-## Package build for Raspberry Pi 3 B
+## Package build for Raspberry Pi 4 B
 
 ### Raspberry Pi Mouse driver installation
 
@@ -41,12 +41,12 @@ sudo usermod -aG dialout $USER
 ```
 mkdir -p ~/ros/dashing/src
 cd ~/ros/dashing/src
-git clone https://github.com/youtalk/raspimouse_ros2.git -b ignore-cartographer-navigation2
+git clone https://github.com/ourfool/raspimouse_ros2.git
 cd raspimouse_ros2
 git submodule update --init
 cd ../..
 rosdep install --from-paths src --ignore-src -r -y
-colcon build --symlink-install
+colcon build --symlink-install --parallel-workers 1
 source ~/ros/dashing/install/setup.bash
 ```
 
@@ -57,12 +57,12 @@ source ~/ros/dashing/install/setup.bash
 ```
 mkdir -p ~/ros/dashing/src
 cd ~/ros/dashing/src
-git clone https://github.com/youtalk/raspimouse_ros2.git
+git clone https://github.com/ourfool/raspimouse_ros2.git
 cd raspimouse_ros2
 git submodule update --init
 cd ../..
 rosdep install --from-paths src --ignore-src -r -y
-colcon build --symlink-install
+colcon build --symlink-install --parallel-workers 1
 source ~/ros/dashing/install/setup.bash
 ```
 
@@ -70,7 +70,7 @@ source ~/ros/dashing/install/setup.bash
 
 Run Raspberry Pi Mouse and RPLiDAR A1M8 drivers.
 
-### Raspberry Pi 3 B
+### Raspberry Pi 4 B
 
 ```
 ros2 launch raspimouse_bringup robot.launch.py
@@ -103,7 +103,7 @@ Please decrease the linear speed to 0.15 [m/s] or lower by pressing `x` key seve
 
 ## Cartographer SLAM
 
-### Raspberry Pi 3 B
+### Raspberry Pi 4 B
 
 Do the same as above.
 
@@ -144,7 +144,7 @@ Note that a sample bag file and map data are stored following directories.
 
 ## Navigation 2
 
-### Raspberry Pi 3 B
+### Raspberry Pi 4 B
 
 Do the same as above.
 
